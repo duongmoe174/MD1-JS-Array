@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm giá trị lớn nhất trong mảng</title>
+</head>
+<body>
+<input type="text" id="txtArray" placeholder="Nhập giá trị 1 phần tử" >
+<input type="button" id="btnAddArray" value="Add" onclick="add_element_to_array()">
+<input type="button" id="btnDisplayArray" value="Display" onclick="display_array()">
+<p id="resultAlertAddArray"></p>
+<p id="resultDisplayArray"></p>
+<input type="text" id="findArray" placeholder="Nhập giá trị cần tìm">
+<input type="button" id="btnFindArray" value="Find" onclick="find_array()">
+<p id="resultFindArray"></p>
+<input type="button" id="btnFindMaxInArray" value="FindMax" onclick="find_max_in_array()">
+<p id="resultMaxInArray"></p>
+
+<script>
+    // gán x ở đây là bằng chỉ số thứ 0 trong biến array
+    var x = 0;
+    var array = Array();
+    function add_element_to_array() {
+        array[x] = document.getElementById("txtArray").value;
+        document.getElementById("resultAlertAddArray").innerText = "Phần tử " + array[x] + " được thêm vào chỉ số thứ " + x;
+        // tăng x xong làm trống input để nhập thêm dữ liệu
+        x++;
+        document.getElementById("txtArray").value = "";
+    }
+    function display_array() {
+        let y = "</hr>";
+        for (let i = 0; i < array.length ; i++) {
+            y += "Chỉ số thứ " + i + " Có giá trị là " + array[i] + "</br>";
+        }
+        document.getElementById("resultDisplayArray").innerHTML = y;
+    }
+    function find_array() {
+        let findArray = document.getElementById("findArray").value;
+        for (let i = 0; i < array.length ; i++) {
+            if (findArray == array[i]) {
+                document.getElementById("resultFindArray").innerText = "Giá trị: " + "'" + findArray + "'" + " được tìm thấy ở chỉ số thứ " + i;
+                break;
+            } else {
+                document.getElementById("resultFindArray").innerText = "Giá trị: " + findArray + " không có trong mảng!";
+            }
+        }
+    }
+    function find_max_in_array() {
+        let max = array[0];
+        let index = 0;
+        for (let i = 0; i < array.length ; i++) {
+            if (array[i] > max) {
+                max = array[i];
+                index = i;
+            }
+            document.getElementById("resultMaxInArray").innerText = "Giá trị lớn nhất là: " + max + " tại chỉ số thứ " + i;
+        }
+    }
+</script>
+</body>
+</html>
