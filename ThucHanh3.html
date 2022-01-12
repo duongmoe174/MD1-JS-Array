@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm giá trị trong mảng</title>
+</head>
+<body>
+<input type="text" id="txtArray" placeholder="Nhập 1 phần tử">
+<input type="button" value="Add" id="btnAdd" onclick="add_element_to_array()" >
+<input type="button" value="Display" id="btnDisplay" onclick="display_array()">
+<p id="result1"></p>
+<p id="result2"></p>
+<input type="text" id="findArray" placeholder="Nhập giá trị cần tìm ">
+<input type="button" id="btnFind" value="Search" onclick="find_array()">
+<p id="result3"></p>
+
+<script>
+    var x = 0;
+    var array = Array();
+    function add_element_to_array() {
+        array[x] = document.getElementById("txtArray").value;
+        document.getElementById("result1").innerText = "Element "+ array[x] + " added at index = " + x;
+        x++;
+        document.getElementById("txtArray").value = ""
+    }
+    function display_array() {
+        let y = "</hr>";
+        for (let i = 0; i < array.length ; i++) {
+            y += "Index at " + i + " = " + array[i] + "</br>" ;
+        }
+        document.getElementById("result2").innerHTML = y;
+    }
+    function find_array() {
+        let findValue = document.getElementById("findArray").value;
+        for (let i = 0; i < array.length ; i++) {
+            if (findValue == array[i]) {
+                document.getElementById("result3").innerText = "Value " + "'" + array[i] + "'" + " found at index = " + i;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
