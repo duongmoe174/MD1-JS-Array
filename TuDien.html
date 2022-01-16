@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TuDien</title>
+</head>
+<style>
+    table {
+        width: 400px;
+        border-collapse: collapse;
+        border: black solid 1px;
+    }
+
+    tr, td {
+        border: black solid 2px;
+        height: 30px;
+        text-align: center;
+    }
+</style>
+<body>
+<table>
+    <tr>
+        <td>
+            <lable>Nhập tiếng Anh:</lable>
+        </td>
+        <td>
+            <input type="text" id="txtEnglish" placeholder="Nhập từ tiếng Anh">
+        </td>
+        <td>
+            <button id="btnAddEnglish" onclick="addEnglish()">Thêm</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <lable>Nhập Tiếng Việt:</lable>
+
+        <td>
+            <input type="text" id="txtVietnamese" placeholder="Nhập từ tiếng Việt"></td>
+        <td>
+            <button id="btnAddVietnamese" onclick="addVietnamese()">Thêm</button>
+        </td>
+    </tr>
+</table>
+<p id="resultAddEng"></p>
+<p id="resultAddVie"></p>
+<br><br>
+
+<div>
+<!--    <input type="text" id="inputEnglish" placeholder=" Nhập Từ cần tìm">-->
+    <button id="btnFind" onclick="findVietnamese()">Find</button>
+    <p id="resultFind"></p>
+    <p id="notFind"></p>
+</div>
+<script>
+    var arrayEng = Array();
+    var x = 0;
+    var arrayVie = Array();
+    var y = 0;
+
+    function addEnglish() {
+        arrayEng[x] = document.getElementById("txtEnglish").value;
+        document.getElementById("resultAddEng").innerText = "Từ: " + "'" + arrayEng[x] + "'" + " đã được thêm vào chỉ số thứ: " + x;
+        x++;
+        document.getElementById("txtEnglish").value = "";
+    }
+
+    function addVietnamese() {
+        arrayVie[y] = document.getElementById("txtVietnamese").value;
+        document.getElementById("resultAddVie").innerText = "Từ: " + "'" + arrayVie[y] + "'" + " đã được thêm vào chỉ số thứ: " + y;
+        y++;
+        document.getElementById("txtVietnamese").value = "";
+    }
+
+    function findVietnamese() {
+        let z = "Từ: "
+        let c = "Không tìm thấy nghĩa từ: " + "</br>"
+        for (let i = 0; i < arrayEng.length; i++) {
+            for (let j = 0; j < arrayVie.length ; j++) {
+                if (i == j) {
+                    z += arrayEng[i] + " có nghĩa là: " + arrayVie[j] + "</br>";
+                } else {
+                    c += arrayEng[i] + "</br>";
+                }
+            }
+        }
+        document.getElementById("resultFind").innerHTML = z;
+        document.getElementById("notFind").innerHTML = c;
+    }
+</script>
+</body>
+</html>
